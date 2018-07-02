@@ -40,15 +40,16 @@ class ListContacts extends React.Component{
 
         return(
         <div className='list-contacts'>
-            <div className='search-contacts-top'>
+            <div className='list-contacts-top'>
              <input className='search-contacts' 
                     type='text'
                     placeholder='Search contacts'
                     value={query}
                     onChange={this.Query}
                     />
+                <a href='create' className='add-contact'  >Add Contact</a>
             </div>{
-                query===''? null :(
+                query!=='' &&(
                     <div className='showing-contacts'>
                         <span>{`Now showing ${showingContacts.length} of ${contactsList.length} total `}
                             {/* <a href='' onClick={this.showAll}>Show all</a> */}

@@ -10,7 +10,7 @@ const headers = {
   'Authorization': token
 }
 
-export const getAll = () =>
+export const getAll = () =>     //customerDetail接口
   fetch(`${api}/contacts`, { headers })
     .then(res => res.json())
     .then(data => data.contacts)
