@@ -16,7 +16,14 @@ class App extends React.Component{
         ContactsAPI.remove(contact)
     }
 
-    componentWillMount(){ 
+    addContact=(contact)=>(
+        ContactsAPI.create(contact).then(contact=>{
+            this.setState(state=>({                      //添加后自动刷新的效果
+                contacts:state.contacts.concat([contact])
+            }))
+        })
+    )
+    componentDidMount(){ 
         ContactsAPI.getAll().then((contacts)=>(
             this.setState({
                 contacts:contacts  //可简写contacts
@@ -31,7 +38,12 @@ class App extends React.Component{
                     onDelectContact={this.onDelectContact} 
                     contactsList={this.state.contacts}/>)}
                 />
-                <Route exact path='/create' component={AddContact}
+                <Route exact path='/create' render={({history})=>(
+                    <AddContact addContact={(contact)=>{
+                        this.addContact(contact)
+                        history.push('/')
+                     }}/> 
+                 )}
                 />
             </div>
         )

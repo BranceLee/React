@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 
+
 class ListContacts extends React.Component{
      static PropType={
         contact:PropTypes.array.isRequired,
@@ -67,8 +68,8 @@ class ListContacts extends React.Component{
                                     backgroundImage:`url(${contact.avatarURL})`
                                 }}></div>
                                 <div className='contact-details'>
-                                    <span>{contact.name}</span>
-                                    <span>{contact.email}</span>
+                                    <p>{contact.name}</p>
+                                    <p>{contact.email}</p>
                                 </div>
                                 <button onClick={()=>(onDelectContact(contact))} className='contact-remove'>Remove</button>
                             </li>
